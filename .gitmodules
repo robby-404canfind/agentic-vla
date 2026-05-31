@@ -1,16 +1,16 @@
-[submodule "src/social_nav_bringup"]
-	path = src/social_nav_bringup
+[submodule "social_nav_bringup"]
+	path = social_nav_bringup
 	url = https://github.com/robby-404canfind/social_nav_bringup.git
 	branch = agentic-vla
-[submodule "src/system_interfaces"]
-	path = src/system_interfaces
+[submodule "system_interfaces"]
+	path = system_interfaces
 	url = https://github.com/robby-404canfind/system_interfaces.git
 	branch = agentic-vla
-[submodule "src/perception_bringup"]
-	path = src/perception_bringup
+[submodule "perception_bringup"]
+	path = perception_bringup
 	url = https://github.com/robby-404canfind/perception_bringup.git
 	branch = agentic-vla
-[submodule "src/system2_bringup"]
-	path = src/system2_bringup
+[submodule "system2_bringup"]
+	path = system2_bringup
 	url = https://github.com/robby-404canfind/system2_bringup.git
 	branch = agentic-vla

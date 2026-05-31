@@ -9,7 +9,7 @@
 - `config/hunav_agents_factory.yaml`: factory 환경의 HuNavSim agent 예시입니다.
 - `config/hunav_agents_office_mixed.yaml`: factory 좌표 확정 전 smoke test용 office agent 예시입니다.
 - `launch/agentic_vla_system.launch.py`: perception stack과 System2 planner/action server를 함께 실행합니다.
-- `scripts/bootstrap_submodules.sh`: submodule을 `agentic-vla` 브랜치 기준으로 동기화합니다.
+- `scripts/bootstrap_submodules.sh`: repository root의 submodule을 `agentic-vla` 브랜치 기준으로 동기화합니다.
 - `scripts/copy_hunav_agents.sh`: HuNavSim agent 설정 파일을 시뮬레이터 config 디렉터리로 복사합니다.
 
 ## 실행 흐름
