@@ -1,0 +1,136 @@
+# HuNavSim factory scenario for the Agentic VLA final lab.
+#
+# behavior.type:
+#   1=regular, 2=impassive, 3=surprised, 4=scared, 5=curious, 6=threatening
+#
+# Copy this file to hunav_agent_manager/config/ and select it as configuration_file.
+
+hunav_loader:
+  ros__parameters:
+    map: factory
+    publish_people: true
+    agents:
+      - worker_1
+      - worker_2
+      - worker_3
+      - worker_4
+
+    worker_1:
+      id: 1
+      skin: 0
+      group_id: -1
+      max_vel: 1.0
+      radius: 0.4
+      behavior:
+        type: 1
+        configuration: 1
+        duration: 40.0
+        once: false
+        vel: 0.6
+        dist: 0.0
+        goal_force_factor: 2.0
+        obstacle_force_factor: 10.0
+        social_force_factor: 5.0
+        other_force_factor: 20.0
+      init_pose:
+        x: -4.0
+        y: 2.0
+        z: 1.25
+        h: 0.0
+      goal_radius: 0.3
+      cyclic_goals: true
+      goals:
+        - g0
+        - g1
+      g0: {x: 4.0, y: 2.0, h: 1.25}
+      g1: {x: -4.0, y: 2.0, h: 1.25}
+
+    worker_2:
+      id: 2
+      skin: 1
+      group_id: -1
+      max_vel: 0.6
+      radius: 0.4
+      behavior:
+        type: 2
+        configuration: 1
+        duration: 40.0
+        once: false
+        vel: 0.4
+        dist: 0.0
+        goal_force_factor: 1.4
+        obstacle_force_factor: 12.0
+        social_force_factor: 7.0
+        other_force_factor: 20.0
+      init_pose:
+        x: 2.0
+        y: 7.0
+        z: 1.25
+        h: -1.57
+      goal_radius: 0.3
+      cyclic_goals: true
+      goals:
+        - g0
+        - g1
+      g0: {x: 2.0, y: -1.0, h: 1.25}
+      g1: {x: 2.0, y: 7.0, h: 1.25}
+
+    worker_3:
+      id: 3
+      skin: 2
+      group_id: -1
+      max_vel: 0.7
+      radius: 0.4
+      behavior:
+        type: 2
+        configuration: 1
+        duration: 40.0
+        once: false
+        vel: 0.4
+        dist: 0.0
+        goal_force_factor: 1.4
+        obstacle_force_factor: 12.0
+        social_force_factor: 7.0
+        other_force_factor: 20.0
+      init_pose:
+        x: 6.0
+        y: 4.0
+        z: 1.25
+        h: 3.14
+      goal_radius: 0.3
+      cyclic_goals: true
+      goals:
+        - g0
+        - g1
+      g0: {x: -1.0, y: 4.0, h: 1.25}
+      g1: {x: 6.0, y: 4.0, h: 1.25}
+
+    worker_4:
+      id: 4
+      skin: 3
+      group_id: -1
+      max_vel: 0.9
+      radius: 0.35
+      behavior:
+        type: 3
+        configuration: 1
+        duration: 20.0
+        once: false
+        vel: 0.0
+        dist: 0.0
+        goal_force_factor: 1.8
+        obstacle_force_factor: 10.0
+        social_force_factor: 6.0
+        other_force_factor: 20.0
+      init_pose:
+        x: 1.0
+        y: 5.0
+        z: 1.25
+        h: 0.0
+      goal_radius: 0.3
+      cyclic_goals: true
+      goals:
+        - g0
+        - g1
+      g0: {x: 5.0, y: 5.0, h: 1.25}
+      g1: {x: 1.0, y: 5.0, h: 1.25}

@@ -1,0 +1,53 @@
+# Factory and hall semantic location placeholders.
+#
+# Replace x/y/yaw after measuring the final simulator map in RViz.
+# The keys are aligned with system2_bringup/config/semantic_locations.yaml.
+
+locations:
+  box_zone:
+    x: 0.0
+    y: 0.0
+    yaw: 0.0
+    description: "박스 적재 구역"
+
+  box_zone_approach:
+    x: 0.0
+    y: 0.0
+    yaw: 0.0
+    description: "박스 구역 관찰 지점"
+
+  aisle_left:
+    x: 0.0
+    y: 0.0
+    yaw: 0.0
+    description: "공장 통로 왼쪽 우회 지점"
+
+  aisle_right:
+    x: 0.0
+    y: 0.0
+    yaw: 0.0
+    description: "공장 통로 오른쪽 우회 지점"
+
+  loading_area:
+    x: 0.0
+    y: 0.0
+    yaw: 0.0
+    description: "상하차 구역"
+
+  security_checkpoint:
+    x: 0.0
+    y: 0.0
+    yaw: 0.0
+    description: "보안 확인 지점"
+
+  hall_entry:
+    x: 0.0
+    y: 0.0
+    yaw: 0.0
+    description: "홀 입구"
+
+  hall_mid:
+    x: 0.0
+    y: 0.0
+    yaw: 0.0
+    description: "홀 중앙"

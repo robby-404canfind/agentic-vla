@@ -49,3 +49,21 @@ qtcreator-*
 
 # Catkin custom files
 CATKIN_IGNORE
+
+# ROS2 workspace outputs
+install/
+log/
+.colcon/
+
+# Python/local tooling
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.env
+.venv/
+venv/
+
+# macOS
+.DS_Store
