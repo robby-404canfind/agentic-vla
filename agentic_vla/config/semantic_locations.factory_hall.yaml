@@ -1,7 +1,7 @@
 # Factory and hall semantic location placeholders.
 #
 # Replace x/y/yaw after measuring the final simulator map in RViz.
-# The keys are aligned with system2_bringup/config/semantic_locations.yaml.
+# The keys are aligned with system2_bringup/config/semantic_locations.hall.yaml.
 
 locations:
   box_zone:

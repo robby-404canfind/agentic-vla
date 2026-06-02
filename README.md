@@ -52,7 +52,8 @@ source install/setup.bash
 bash agentic_vla/scripts/copy_hunav_agents.sh /path/to/hunav_agent_manager/config
 ```
 
-factory, hall semantic location의 실제 좌표는 최종 simulator map에서 RViz로 측정한 뒤 `system2_bringup/config/semantic_locations.yaml`에 반영합니다.
+hall semantic location의 실제 좌표는 최종 simulator map에서 RViz로 측정한 뒤 `system2_bringup/config/semantic_locations.hall.yaml`에 반영합니다.
+Ch05 통합 실습에서는 이 파일이 semantic location의 단일 기준입니다. `social_nav_bringup/config/semantic_locations.office.yaml`은 Ch02 단독 `go_to_node`/`patrol_node` 유닛 액션 테스트용 office 환경 파일로 유지하며, Ch05 hall 좌표를 중복 반영하지 않습니다.
 
 ## Run
 

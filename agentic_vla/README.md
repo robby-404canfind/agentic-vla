@@ -5,7 +5,7 @@
 ## 포함 파일
 
 - `config/mission_examples.yaml`: 자연어 mission 예시와 기대 high-level action 패턴입니다.
-- `config/semantic_locations.factory_hall.yaml`: factory, hall semantic location placeholder입니다.
+- `config/semantic_locations.factory_hall.yaml`: factory, hall semantic location placeholder입니다. 키 이름은 `system2_bringup/config/semantic_locations.hall.yaml`과 맞춥니다.
 - `config/hunav_agents_factory.yaml`: factory 환경의 HuNavSim agent 예시입니다.
 - `config/hunav_agents_office_mixed.yaml`: factory 좌표 확정 전 smoke test용 office agent 예시입니다.
 - `launch/agentic_vla_system.launch.py`: perception stack과 System2 planner/action server를 함께 실행합니다.
