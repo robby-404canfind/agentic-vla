@@ -1,7 +1,7 @@
-"""Launch the Agentic VLA perception and planner stack.
+"""Launch the Ch05 Agentic VLA full node stack.
 
 HuNavSim/Webots and Nav2 are started from the simulator environment first.
-This launch file starts the ROS2 nodes maintained in this workspace.
+This top-level launch delegates to system2_bringup's full-stack launch.
 """
 
 from launch import LaunchDescription
@@ -12,25 +12,13 @@ from launch_ros.substitutions import FindPackageShare
 
 
 def generate_launch_description():
-    perception_launch = IncludeLaunchDescription(
-        PythonLaunchDescriptionSource(
-            PathJoinSubstitution(
-                [
-                    FindPackageShare("perception_bringup"),
-                    "launch",
-                    "perception.launch.py",
-                ]
-            )
-        )
-    )
-
-    system2_launch = IncludeLaunchDescription(
+    full_stack_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
             PathJoinSubstitution(
                 [
                     FindPackageShare("system2_bringup"),
                     "launch",
-                    "system2_integrated.launch.py",
+                    "system2_full_stack.launch.py",
                 ]
             )
         ),
@@ -58,7 +46,6 @@ def generate_launch_description():
                 default_value="charging_station",
                 description="Fallback semantic location for recovery.",
             ),
-            perception_launch,
-            system2_launch,
+            full_stack_launch,
         ]
     )
