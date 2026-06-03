@@ -1,69 +1,39 @@
 # Agentic VLA final lab mission examples.
 #
-# These are scenario prompts and expected high-level tool patterns.
-# Coordinates and HuNavSim agent placement are intentionally configurable by each class.
+# Default Ch05 missions use the hall semantic map:
+# system2_bringup/config/semantic_locations.hall.yaml
+# and system2_bringup/config/patrol_routes.yaml.
 
 missions:
-  inspect_box_zone:
-    user_utterance: "박스가 있는 곳까지 가서 주변에 수상한 사람이 있나 보고 있다면 나한테 알려줘."
-    semantic_target: box_zone_approach
+  find_person:
+    user_utterance: "사람을 찾아줘."
     expected_plan:
-      - action: go_to
+      - action: find
         params:
-          target_location: box_zone_approach
-          timeout_sec: 90.0
-      - action: assess_scene
-        params:
-          query: "박스 적재 구역 주변에 강의용 이상 행동 cue를 보이는 사람이 있는가?"
-          timeout_sec: 30.0
-      - action: report
-        params:
-          status: latest_assessment
+          target_class: person
     evaluation_focus:
-      - semantic location grounding
-      - VLM scene assessment result JSON
-      - result summary in report
+      - natural language to known-class find
+      - /system1/find action connection
+      - center_after_find behavior
 
-  follow_blue_person:
-    user_utterance: "저기 파란색 옷 입은 사람을 일정 거리 두고 따라가줘."
+  follow_center_person:
+    user_utterance: "화면 중앙에 있는 사람을 5초 동안 일정 거리 두고 따라가줘."
     expected_plan:
       - action: follow_query
         params:
-          target_query: "파란색 옷을 입은 사람"
-          target_distance_m: 1.8
-          max_time_sec: 60.0
+          target_query: "화면 중앙에 있는 사람"
+          max_time_sec: 5.0
     evaluation_focus:
       - target query to track ID resolution
-      - handoff from resolve_target to follow
-      - safe following timeout
-
-  patrol_and_report:
-    user_utterance: "공장 박스 구역을 한 바퀴 확인하고 이상한 점이 있으면 알려줘."
-    route_id: box_inspection_loop
-    expected_plan:
-      - action: patrol
-        params:
-          route_id: box_inspection_loop
-          max_time_sec: 180.0
-      - action: assess_scene
-        params:
-          query: "최근 관찰한 박스 구역에 접근 통제 또는 이상 행동 cue가 있는가?"
-          timeout_sec: 30.0
-      - action: report
-        params:
-          status: latest_assessment
-    evaluation_focus:
-      - route execution
-      - assessment after navigation context
-      - concise operator report
+      - resolve_target to follow handoff
+      - bounded follow duration
 
   resolve_visible_target:
-    user_utterance: "화면에서 오른쪽에 있는 작업자가 누구인지 확인해서 알려줘."
+    user_utterance: "화면 중앙에 있는 사람이 누구인지 확인해서 알려줘."
     expected_plan:
       - action: resolve_target
         params:
-          target_query: "화면 오른쪽에 있는 작업자"
-          timeout_sec: 30.0
+          target_query: "화면 중앙에 있는 사람"
       - action: report
         params:
           status: latest_target
@@ -71,3 +41,39 @@ missions:
       - annotated snapshot use
       - track ID selection confidence
       - target result summary in report
+
+  inspect_office_entrance:
+    user_utterance: "오피스 입구로 가서 수상한 사람이 있는지 확인해서 보고해줘."
+    semantic_target: office_entrance
+    expected_plan:
+      - action: go_to
+        params:
+          location: office_entrance
+      - action: assess_scene
+        params:
+          query: "수상한 사람"
+      - action: report
+        params:
+          status: latest_assessment
+    evaluation_focus:
+      - hall semantic location grounding
+      - VLM scene assessment result
+      - snapshot path in /system2/report
+
+  patrol_and_report:
+    user_utterance: "hall_short_loop을 짧게 순찰하고 수상한 사람이 있는지 평가해서 보고해줘."
+    route: hall_short_loop
+    expected_plan:
+      - action: patrol
+        params:
+          area: hall_short_loop
+      - action: assess_scene
+        params:
+          query: "수상한 사람"
+      - action: report
+        params:
+          status: latest_assessment
+    evaluation_focus:
+      - route execution with hall patrol routes
+      - assessment after navigation context
+      - concise operator report
