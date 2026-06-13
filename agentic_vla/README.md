@@ -14,14 +14,14 @@
 
 ## 실행 흐름
 
-HuNavSim/Webots와 Nav2는 시뮬레이터 환경에서 먼저 실행합니다. 그다음 이 workspace에서 다음 launch를 실행합니다.
+HuNavSim/Webots와 Nav2는 시뮬레이터 환경에서 실행합니다. 그다음 이 workspace에서 다음 launch를 실행합니다.
 
 ```bash
 source install/setup.bash
 ros2 launch agentic_vla agentic_vla_system.launch.py
 ```
 
-LLM backend/model을 임시로 바꾸려면 launch argument를 사용합니다.
+LLM backend/model을 임시로 바꾸려면 launch argument를 지정합니다.
 
 ```bash
 ros2 launch agentic_vla agentic_vla_system.launch.py \

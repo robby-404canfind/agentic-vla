@@ -1,6 +1,6 @@
 # Agentic VLA
 
-Agentic VLA 최종 실습용 ROS2 workspace입니다. Ch02-Ch05에서 만든 핵심 패키지는 repository root 아래 submodule로 연결하고, 시나리오 자산과 실행 보조 파일은 `agentic_vla` 패키지에서 직접 관리합니다.
+Agentic VLA 최종 실습용 ROS2 workspace입니다. Ch02-Ch05에서 만든 핵심 패키지는 repository root 아래 submodule로 연결합니다. 시나리오 자산과 실행 보조 파일은 `agentic_vla` 패키지에서 직접 관리합니다.
 
 ## 구조
 
@@ -22,7 +22,7 @@ cd agentic-vla
 git submodule update --init --recursive
 ```
 
-이미 clone한 뒤 최신 실습 브랜치로 맞출 때는 다음 명령을 사용합니다.
+이미 clone한 workspace를 최신 실습 브랜치로 맞출 때는 다음 명령을 사용합니다.
 
 ```bash
 bash agentic_vla/scripts/bootstrap_submodules.sh
@@ -30,7 +30,7 @@ bash agentic_vla/scripts/bootstrap_submodules.sh
 
 ## Build
 
-기존 Ch03/Ch05 `system2_bringup` 패키지를 같은 colcon workspace에서 빌드한 상태라면 먼저 이전 build/install 산출물을 정리합니다.
+같은 colcon workspace에서 기존 Ch03/Ch05 `system2_bringup` 패키지를 빌드했다면 이전 build/install 산출물부터 정리합니다.
 
 ```bash
 rm -rf build/system2_bringup install/system2_bringup
@@ -46,18 +46,18 @@ source install/setup.bash
 
 ## HuNavSim Agent Config
 
-`agentic_vla/config/`에는 factory와 office smoke test용 HuNavSim agent 설정이 들어 있습니다. HuNavSim Docker workspace의 `hunav_agent_manager/config/` 경로를 알고 있다면 다음 스크립트로 복사할 수 있습니다.
+`agentic_vla/config/`에는 factory와 office smoke test용 HuNavSim agent 설정이 들어 있습니다. HuNavSim Docker workspace의 `hunav_agent_manager/config/` 경로를 알고 있다면 다음 스크립트로 복사합니다.
 
 ```bash
 bash agentic_vla/scripts/copy_hunav_agents.sh /path/to/hunav_agent_manager/config
 ```
 
 hall semantic location의 실제 좌표는 최종 simulator map에서 RViz로 측정한 뒤 `system2_bringup/config/semantic_locations.hall.yaml`에 반영합니다.
-Ch05 통합 실습에서는 이 파일이 semantic location의 단일 기준입니다. `social_nav_bringup/config/semantic_locations.office.yaml`은 Ch02 단독 `go_to_node`/`patrol_node` 유닛 액션 테스트용 office 환경 파일로 유지하며, Ch05 hall 좌표를 중복 반영하지 않습니다.
+Ch05 통합 실습에서는 이 파일이 semantic location의 단일 기준입니다. `social_nav_bringup/config/semantic_locations.office.yaml`은 Ch02 단독 `go_to_node`/`patrol_node` 유닛 액션 테스트용 office 환경 파일로 유지하며 Ch05 hall 좌표를 중복 반영하지 않습니다.
 
 ## Run
 
-HuNavSim/Webots와 Nav2를 먼저 실행한 뒤, 이 workspace에서 Agentic VLA 노드를 실행합니다.
+HuNavSim/Webots와 Nav2를 실행한 뒤 이 workspace에서 Agentic VLA 노드를 실행합니다.
 
 ```bash
 source install/setup.bash
